@@ -1,0 +1,220 @@
+{
+  "repo": "security-handbook",
+  "github": "santoshjammi29/security-handbook",
+  "name": "Security Handbook",
+  "role": "Enterprise security patterns: Cloud perimeter, DevSecOps, ETL/ELT governance, Databricks Unity Catalog, ADF, Python cryptography",
+  "last_synced": "2026-11-21T04:54:58.632106Z",
+  "entry_count": 20,
+  "entries": [
+    {
+      "id": "security-handbook-01_authn_oidc_and_zero_trust",
+      "type": "curriculum_module",
+      "title": "Authn Oidc And Zero Trust",
+      "module": "01_authn_oidc_and_zero_trust",
+      "difficulty": "L200",
+      "relative_path": "modules/01_authn_oidc_and_zero_trust/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-02_authz_rbac_abac_and_governance",
+      "type": "curriculum_module",
+      "title": "Authz Rbac Abac And Governance",
+      "module": "02_authz_rbac_abac_and_governance",
+      "difficulty": "L200",
+      "relative_path": "modules/02_authz_rbac_abac_and_governance/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-03_cloud_networking_and_perimeter_defense",
+      "type": "curriculum_module",
+      "title": "Cloud Networking And Perimeter Defense",
+      "module": "03_cloud_networking_and_perimeter_defense",
+      "difficulty": "L200",
+      "relative_path": "modules/03_cloud_networking_and_perimeter_defense/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-04_secrets_management_and_encryption",
+      "type": "curriculum_module",
+      "title": "Secrets Management And Encryption",
+      "module": "04_secrets_management_and_encryption",
+      "difficulty": "L200",
+      "relative_path": "modules/04_secrets_management_and_encryption/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-05_devsecops_cicd_and_supply_chain",
+      "type": "curriculum_module",
+      "title": "Devsecops Cicd And Supply Chain",
+      "module": "05_devsecops_cicd_and_supply_chain",
+      "difficulty": "L200",
+      "relative_path": "modules/05_devsecops_cicd_and_supply_chain/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-06_python_secure_coding_and_cryptography",
+      "type": "curriculum_module",
+      "title": "Python Secure Coding And Cryptography",
+      "module": "06_python_secure_coding_and_cryptography",
+      "difficulty": "L200",
+      "relative_path": "modules/06_python_secure_coding_and_cryptography/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-07_etl_elt_and_pipeline_security",
+      "type": "curriculum_module",
+      "title": "Etl Elt And Pipeline Security",
+      "module": "07_etl_elt_and_pipeline_security",
+      "difficulty": "L200",
+      "relative_path": "modules/07_etl_elt_and_pipeline_security/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-08_adf_and_azure_pipeline_security",
+      "type": "curriculum_module",
+      "title": "Adf And Azure Pipeline Security",
+      "module": "08_adf_and_azure_pipeline_security",
+      "difficulty": "L200",
+      "relative_path": "modules/08_adf_and_azure_pipeline_security/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-09_databricks_unity_catalog_security",
+      "type": "curriculum_module",
+      "title": "Databricks Unity Catalog Security",
+      "module": "09_databricks_unity_catalog_security",
+      "difficulty": "L200",
+      "relative_path": "modules/09_databricks_unity_catalog_security/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-10_incident_triage_auditing_and_compliance",
+      "type": "curriculum_module",
+      "title": "Incident Triage Auditing And Compliance",
+      "module": "10_incident_triage_auditing_and_compliance",
+      "difficulty": "L200",
+      "relative_path": "modules/10_incident_triage_auditing_and_compliance/README.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-rb-01_compromised_credential_and_secret_revocation_triage",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Compromised Credential And Secret Revocation Triage",
+      "difficulty": "L400",
+      "relative_path": "runbooks/01_compromised_credential_and_secret_revocation_triage.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-rb-02_storage_account_data_exfiltration_and_public_exposure",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Storage Account Data Exfiltration And Public Exposure",
+      "difficulty": "L400",
+      "relative_path": "runbooks/02_storage_account_data_exfiltration_and_public_exposure.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-rb-03_databricks_unauthorized_data_access_and_pat_breach",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Databricks Unauthorized Data Access And Pat Breach",
+      "difficulty": "L400",
+      "relative_path": "runbooks/03_databricks_unauthorized_data_access_and_pat_breach.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-rb-04_data_pipeline_ssrf_and_sql_injection_remediation",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Data Pipeline Ssrf And Sql Injection Remediation",
+      "difficulty": "L400",
+      "relative_path": "runbooks/04_data_pipeline_ssrf_and_sql_injection_remediation.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-rb-05_ransomware_and_tampered_lakehouse_disaster_recovery",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Ransomware And Tampered Lakehouse Disaster Recovery",
+      "difficulty": "L400",
+      "relative_path": "runbooks/05_ransomware_and_tampered_lakehouse_disaster_recovery.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-rb-06_zero_downtime_certificate_and_secret_rotation",
+      "type": "incident_runbook",
+      "title": "Incident Runbook: Zero Downtime Certificate And Secret Rotation",
+      "difficulty": "L400",
+      "relative_path": "runbooks/06_zero_downtime_certificate_and_secret_rotation.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-doc-01_zero_trust_cloud_and_data_perimeter_architecture",
+      "type": "architecture_blueprint",
+      "title": "Architecture: 01 Zero Trust Cloud And Data Perimeter Architecture",
+      "difficulty": "L400",
+      "relative_path": "architectures/01_zero_trust_cloud_and_data_perimeter_architecture.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-doc-02_unity_catalog_and_lakehouse_governance_internals",
+      "type": "architecture_blueprint",
+      "title": "Architecture: 02 Unity Catalog And Lakehouse Governance Internals",
+      "difficulty": "L400",
+      "relative_path": "architectures/02_unity_catalog_and_lakehouse_governance_internals.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-doc-03_cryptography_envelope_encryption_and_key_management",
+      "type": "architecture_blueprint",
+      "title": "Architecture: 03 Cryptography Envelope Encryption And Key Management",
+      "difficulty": "L400",
+      "relative_path": "architectures/03_cryptography_envelope_encryption_and_key_management.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    },
+    {
+      "id": "security-handbook-doc-04_devsecops_pipeline_and_workload_identity_federation",
+      "type": "architecture_blueprint",
+      "title": "Architecture: 04 Devsecops Pipeline And Workload Identity Federation",
+      "difficulty": "L400",
+      "relative_path": "architectures/04_devsecops_pipeline_and_workload_identity_federation.md",
+      "pillars": [
+        "Security, Governance & Compliance"
+      ]
+    }
+  ]
+}
