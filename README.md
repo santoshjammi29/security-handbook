@@ -53,44 +53,167 @@ flowchart TD
 
 ## 🖼️ Master Whiteboard Architecture Blueprints
 
-The repository incorporates publication-grade architectural whiteboard blueprints mirrored under [`assets/whiteboards/`](assets/whiteboards) and cataloged in [`docs/whiteboard_diagrams/README.md`](docs/whiteboard_diagrams/README.md):
+The repository incorporates publication-grade architectural whiteboard blueprints mirrored under [`assets/whiteboards/`](assets/whiteboards) and cataloged with comprehensive 5-persona breakdowns, failure modes, and engine internals in [`docs/whiteboard_diagrams/README.md`](docs/whiteboard_diagrams/README.md) and [`whiteboards/handbook_whiteboard_blueprints.md`](whiteboards/handbook_whiteboard_blueprints.md):
+
+- 🖼️ **[Master Whiteboard Blueprints Hub](whiteboards/handbook_whiteboard_blueprints.md)**: Complete whiteboard architecture diagrams detailing perimeter isolation, identity federation, encryption hierarchies, and zero-trust boundaries.
+- 📊 **[Spark Architecture & Tuning Cheatsheet](assets/whiteboards/spark_architecture_catalyst_cheatsheet.jpg)**: High-resolution visual cheatsheet covering cluster topology, Catalyst compiler phases, and memory tiers.
+- 🔀 **[Join Strategies Decision Matrix](assets/whiteboards/spark_join_strategies_decision_matrix.jpg)**: Visual flowchart and decision tree for distributed joins and broadcast thresholds.
+- ⚡ **[Skew & Memory Spill Triage](assets/whiteboards/spark_performance_skew_spill_triage.jpg)**: Step-by-step diagnostic workflow for data skew, spill to disk, and OOM triage.
+
+### 📐 Visual Security & Governance Blueprints Showcase (4x2 Grid)
 
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#open-table-formats-lakehouse">
-        <img src="assets/whiteboards/open_table_formats_lakehouse_architecture.webp" alt="Open Table Formats Blueprint: Lakehouse Storage Engines" width="100%" />
+      <a href="docs/whiteboard_diagrams/README.md#unity-catalog-governance">
+        <img src="assets/whiteboards/unity_catalog_architecture.webp" alt="Databricks Unity Catalog 3-Tier Security & Governance" width="100%" />
       </a>
-      <br><strong>Open Table Formats Blueprint: Lakehouse Storage Engines</strong><br>
-      <em>Storage isolation, Parquet immutability, and access control boundaries across Delta Lake, Iceberg, and Hudi.</em>
+      <br><strong>Databricks Unity Catalog 3-Tier Security & Governance</strong><br>
+      <em>3-level namespaces, decoupled storage credentials, downscoped temporary tokens, and centralized audit logging across workspaces.</em>
     </td>
     <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#lakehouse-acid-concurrency">
-        <img src="assets/whiteboards/lakehouse_acid_concurrency.webp" alt="Lakehouse ACID Concurrency & Write Conflict Resolution Matrix" width="100%" />
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-access-masking">
+        <img src="assets/whiteboards/lakehouse_access_masking_lifecycle_architecture.webp" alt="Lakehouse Access & Dynamic Column Masking Lifecycle" width="100%" />
       </a>
-      <br><strong>Lakehouse ACID Concurrency & Write Conflict Resolution Matrix</strong><br>
-      <em>Write serialization, commit conflict detection, and optimistic concurrency control mechanisms.</em>
+      <br><strong>Lakehouse Access & Dynamic Column Masking Lifecycle</strong><br>
+      <em>ABAC policy evaluation, dynamic row filters, SHA-256 column tokenization, and Catalyst physical plan rule injection.</em>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#scd-types-lakehouse">
-        <img src="assets/whiteboards/scd_types_lakehouse.webp" alt="Slowly Changing Dimensions (SCD Types 1, 2, 3, 4, 6) in SQL" width="100%" />
+      <a href="docs/whiteboard_diagrams/README.md#purview-governance-catalog">
+        <img src="assets/whiteboards/purview_governance_catalog.webp" alt="Microsoft Purview Enterprise Governance & Sensitivity Labels" width="100%" />
       </a>
-      <br><strong>Slowly Changing Dimensions (SCD Types 1, 2, 3, 4, 6) in SQL</strong><br>
-      <em>Tamper-evident audit trails, historical point-in-time state tracking, and regulatory lineage preservation.</em>
+      <br><strong>Microsoft Purview Enterprise Governance & Sensitivity Labels</strong><br>
+      <em>Automated classification rules, PII boundary labeling, cross-engine lineage scanning, and decoupled Purview RBAC.</em>
     </td>
     <td width="50%" valign="top">
-      <a href="docs/whiteboard_diagrams/README.md#delta-lake-under-the-hood">
-        <img src="assets/whiteboards/delta_lake_mechanism.webp" alt="How Delta Lake Works Under the Hood" width="100%" />
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-bcdr-failover">
+        <img src="assets/whiteboards/lakehouse_bcdr_failover_architecture.webp" alt="Lakehouse Business Continuity, Ransomware Recovery & Multi-Region DR" width="100%" />
       </a>
-      <br><strong>How Delta Lake Works Under the Hood</strong><br>
-      <em>Append-only transaction logs, Time Travel recovery, snapshot isolation, and ransomware recovery.</em>
+      <br><strong>Lakehouse Business Continuity, Ransomware Recovery & Multi-Region DR</strong><br>
+      <em>Active-passive failover, Delta Time Travel restoration (`RESTORE TABLE`), immutable WORM storage locks, and RPO/RTO SLAs.</em>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#lakehouse-cicd-promotion">
+        <img src="assets/whiteboards/lakehouse_cicd_promotion_lifecycle_architecture.webp" alt="DevSecOps CI/CD Promotion & Keyless OIDC Identity" width="100%" />
+      </a>
+      <br><strong>DevSecOps CI/CD Promotion & Keyless OIDC Identity</strong><br>
+      <em>Ephemeral token negotiation, SLSA Level 3 supply chain security, Cosign artifact signing, and policy-as-code gate checks.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#governed-agentic-rag">
+        <img src="assets/whiteboards/governed_agentic_rag_pipeline_architecture.webp" alt="Governed Agentic RAG & Enterprise AI Security Perimeter" width="100%" />
+      </a>
+      <br><strong>Governed Agentic RAG & Enterprise AI Security Perimeter</strong><br>
+      <em>Vector search access boundaries, tenant data isolation, prompt injection defenses, and audit telemetry.</em>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#data-mesh-enterprise">
+        <img src="assets/whiteboards/data_mesh_enterprise_architecture.webp" alt="Data Mesh Federated Governance & Security Contracts" width="100%" />
+      </a>
+      <br><strong>Data Mesh Federated Governance & Security Contracts</strong><br>
+      <em>Domain-oriented ownership boundaries, Open Data Contract Standard (ODCS), and federated policy enforcement.</em>
+    </td>
+    <td width="50%" valign="top">
+      <a href="docs/whiteboard_diagrams/README.md#data-quality-wap">
+        <img src="assets/whiteboards/data_quality_wap_quarantine_architecture.webp" alt="Write-Audit-Publish (WAP) & Automated Quarantine Protection" width="100%" />
+      </a>
+      <br><strong>Write-Audit-Publish (WAP) & Automated Quarantine Protection</strong><br>
+      <em>Isolated staging branches, pre-publish cryptographic integrity verification, and automated quarantine routing.</em>
     </td>
   </tr>
 </table>
 
 > 🔍 **Explore all 52 blueprints with 5-persona breakdowns, failure modes, and engine internals in [docs/whiteboard_diagrams/README.md](docs/whiteboard_diagrams/README.md)**.
+
+---
+
+## 🧠 Core Curriculum Concepts & Topics (37 Security & Governance Topics Covered)
+
+> 💡 **Enterprise Knowledge Base Integration**: Core zero-trust, identity, encryption, and governance primitives implemented throughout the security handbook, cross-linked with the [Modern Data Engineering Systems Encyclopedia (921 Topics)](https://moderndataengineer.uk/concepts), arranged in increasing order of difficulty. Browse the full curriculum in [`topics/README.md`](topics/README.md).
+
+### 📑 Security & Governance Topics Directory at a Glance
+
+| Security Pillar | Topic Count | Key Core Primitives Covered | Status |
+|:---|:---:|:---|:---:|
+| 🔐 **Zero-Trust Identity & Secrets** | **7** | Databricks Secrets, Key Vault Scopes, Airflow Secrets, Token Bucket | ✅ Documented |
+| 🌐 **Perimeter & Network Isolation** | **3** | Managed VNets, Managed Private Endpoints, Private Link | ✅ Documented |
+| 🏛️ **Unity Catalog & Access Control** | **11** | 3-Level Namespaces, Dynamic Row Filters & Column Masks, ABAC | ✅ Documented |
+| 📜 **Lineage, Audit & Governance** | **16** | OpenLineage, System Tables, Purview Metadata, Bi-Temporal Auditing | ✅ Documented |
+
+<details>
+<summary><b>🔐 Zero-Trust Identity, Authentication & Secrets Management (7 Topics)</b> — <i>Click to expand topic index (sorted by difficulty)</i></summary>
+
+| # | Topic / Concept | Level | Architectural Definition & Core Principle |
+|:---:|---|:---:|---|
+| 1 | **Secrets Management** | 🟢<br>Easy | The secure credential management framework in Databricks (Secret Scopes backed by Azure Key Vault or encrypted storage) used to securely inject tokens, API keys, and connection strings at runtime. |
+| 2 | **Airflow Connection Secrets Backend** | 🟡<br>Intermediate | Storing Airflow database and API connections in cloud secret managers (HashiCorp Vault, AWS Secrets Manager). |
+| 3 | **Databricks Secret Scopes (Azure Key Vault)** | 🟡<br>Intermediate | Secure credential storage backed by cloud key vaults, accessed in notebooks via `dbutils.secrets.get()`. |
+| 4 | **Databricks Secrets** | 🟡<br>Intermediate | A Databricks-managed key-value secret store that securely injects sensitive values (API keys, connection strings, passwords) into notebooks and job runs without exposing them as plaintext. |
+| 5 | **Token Bucket Algorithm** | 🟡<br>Intermediate | A rate limiting algorithm that models a bucket holding a maximum of N tokens, where tokens are added at a fixed rate and each request consumes one token, allowing controlled burst traffic. |
+| 6 | **Token Bucket Rate Limiting Algorithm** | 🟡<br>Intermediate | An algorithm that meters API requests by accumulating tokens at a constant rate up to a bucket capacity. |
+| 7 | **Custom Secret Backends** | 🟣<br>Architect | Custom Secret Backends enable Airflow to retrieve Connections and Variables directly from enterprise secret management systems at runtime without storing secrets in the metadata database. |
+
+</details>
+
+<details>
+<summary><b>🌐 Cloud Network Isolation & Perimeter Defense (3 Topics)</b> — <i>Click to expand topic index (sorted by difficulty)</i></summary>
+
+| # | Topic / Concept | Level | Architectural Definition & Core Principle |
+|:---:|---|:---:|---|
+| 1 | **Managed Private Endpoints** | 🟡<br>Intermediate | Private IP addresses provisioned inside the ADF Managed Virtual Network to secure connections to Azure resources. |
+| 2 | **Managed Virtual Network (Managed VNet)** | 🟡<br>Intermediate | A secure networking feature that runs ADF Integration Runtimes inside a dedicated private network boundary, connecting to services via Private Endpoints. |
+| 3 | **ADF Managed Private Endpoint Provisioning & Timeout Bypass** | 🟣<br>Architect | Enterprise network security architecture managing lifecycle, approval protocols, and timeout bypass for private endpoints inside ADF Managed Virtual Networks. |
+
+</details>
+
+<details>
+<summary><b>🏛️ Unity Catalog, Fine-Grained Access Control & Dynamic Data Masking (11 Topics)</b> — <i>Click to expand topic index (sorted by difficulty)</i></summary>
+
+| # | Topic / Concept | Level | Architectural Definition & Core Principle |
+|:---:|---|:---:|---|
+| 1 | **Unity Catalog** | 🟢<br>Easy | Unity Catalog is Databricks' centralized, multi-cloud governance solution providing unified access control, data auditing, lineage tracking, and discovery across all workspace assets. |
+| 2 | **Attribute-Based Dynamic Column Masking (ABAC)** | 🟡<br>Intermediate | A runtime security policy engine that evaluates user attributes (role, department, clearance) to conditionally mask, hash, or redact sensitive column values without duplicating tables. |
+| 3 | **Dynamic Views for Security** | 🟡<br>Intermediate | Security-hardened SQL views that evaluate user context functions (`CURRENT_USER()`, `IS_MEMBER()`) at runtime to provide row-level filtering and column-level masking without duplicating data. |
+| 4 | **Row-Level Security (RLS)** | 🟡<br>Intermediate | A security feature that restricts database row access for specific users based on active role filters. |
+| 5 | **Unity Catalog Volumes (Managed vs. External)** | 🟡<br>Intermediate | A Unity Catalog securable object that extends centralized catalog governance, audit trails, and SQL permissions to unstructured and semi-structured files. |
+| 6 | **Unity Catalog 3-Level Namespace & Attribute-Based Access Control (ABAC)** | 🔴<br>Advanced | Unified lakehouse governance with catalog.schema.table namespace and tag-based dynamic masking policies. |
+| 7 | **Unity Catalog Fine-Grained Access Control** | 🔴<br>Advanced | Fine-Grained Access Control in Unity Catalog enforces cell-level security via Row Filters and Column Masks defined with standard SQL functions. |
+| 8 | **Object-Level Security (OLS) & Dynamic RLS at Scale** | 🟣<br>Architect | Fine-grained security architecture enforcing dynamic row filters and complete column/table metadata obfuscation across enterprise user bases. |
+| 9 | **Unity Catalog Dynamic Column Masking & Row Filters** | 🟣<br>Architect | Declarative SQL-based fine-grained access control policies enforced transparently at the Unity Catalog metadata layer. |
+| 10 | **Unity Catalog Dynamic Row Filters & Column Masks** | 🟣<br>Architect | Fine-grained SQL access control mechanisms in Unity Catalog that dynamically redact columns or filter table rows based on the querying user's group membership. |
+| 11 | **Unity Catalog Enterprise Governance** | 🟣<br>Architect | The enterprise governance operating model for Unity Catalog encompassing account-level identity management, catalog segregation, classification tagging, and regulatory audit compliance. |
+
+</details>
+
+<details>
+<summary><b>📜 Data Lineage, Auditing & Regulatory Governance (16 Topics)</b> — <i>Click to expand topic index (sorted by difficulty)</i></summary>
+
+| # | Topic / Concept | Level | Architectural Definition & Core Principle |
+|:---:|---|:---:|---|
+| 1 | **Data Quality Evidence with Lineage** | 🟢<br>Easy | A record connecting a quality check result to the data version, pipeline run, rules, and upstream inputs that produced it. |
+| 2 | **Data Lineage** | 🟡<br>Intermediate | The automated, real-time metadata tracking engine in Unity Catalog that captures column-level and table-level data flow lineage across queries, notebooks, workflows, and dashboards. |
+| 3 | **OpenLineage Operational Telemetry Standard** | 🟡<br>Intermediate | An open standard for automated collection of end-to-end dataset lineage, pipeline job execution metadata, and runtime assertions across data platforms. |
+| 4 | **OpenLineage Standard Operational Run Facets** | 🟡<br>Intermediate | An open standard specification that captures job execution events, input/output dataset schemas, row counts, and error states emitted during pipeline runs. |
+| 5 | **Unity Catalog Lineage Tracking** | 🟡<br>Intermediate | Automated capture of column-level and table-level data flow across queries, jobs, and dashboards. |
+| 6 | **Audit Logging** | 🔴<br>Advanced | Audit Logging captures, records, and exports detailed security audit trails of all user and system activities occurring across Databricks workspaces and Unity Catalog. |
+| 7 | **Delta Lake VACUUM & Retention Governance** | 🔴<br>Advanced | The maintenance command in Delta Lake that removes uncommitted and historical Parquet data files that are older than the specified retention threshold. |
+| 8 | **Purview Metadata Enrichment & Non-Destructive Cataloging** | 🔴<br>Advanced | The architectural principle ensuring that metadata enrichment, classifications, and business definitions applied in Microsoft Purview do not modify source Fabric storage objects. |
+| 9 | **Unity Catalog System Tables** | 🔴<br>Advanced | Unity Catalog System Tables are analytical Delta tables hosted in the system catalog that expose operational metadata, cost telemetry, query history, and data lineage. |
+| 10 | **Column-Level Encryption & Tokenization (FPE)** | 🟣<br>Architect | Cryptographic data protection mechanisms that encrypt or tokenize sensitive PII attributes while preserving original data formats and enabling analytical queries. |
+| 11 | **Data Mesh Federated Governance** | 🟣<br>Architect | A decentralized data governance framework balancing domain autonomy with standardized enterprise interoperability policies. |
+| 12 | **Data Mesh Federated Governance & Data Product Contracts (ODCS)** | 🟣<br>Architect | Decentralized domain ownership with centralized automated compliance and declarative schema contracts. |
+| 13 | **FinOps Cost Attribution Matrix for Shared Catalogs** | 🟣<br>Architect | The allocation framework that attributes compute, storage, and egress spend back to specific business units and data products across shared enterprise lakehouse infrastructure. |
+| 14 | **Governance with Unity Catalog + Purview** | 🟣<br>Architect | The enterprise governance integration between Databricks Unity Catalog and Microsoft Purview, unifying lakehouse metadata with company-wide data governance. |
+| 15 | **Temporal Tables & Point-In-Time Bi-Temporal Auditing** | 🟣<br>Architect | System-versioned relational table architecture automatically recording the full history of data modifications with UTC period start/end timestamps. |
+| 16 | **Unity Catalog System Tables for Lakehouse FinOps** | 🟣<br>Architect | Centrally governed, read-only analytical schemas providing real-time telemetry on compute usage, billing, audit access, and lineage across an entire account. |
+
+</details>
 
 ---
 

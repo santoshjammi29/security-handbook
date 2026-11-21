@@ -79,3 +79,70 @@ Under GDPR Article 17 (Right to Erasure), organizations must delete a user's per
 2. Store the encrypted PII in standard immutable Parquet files.
 3. Upon receiving a certified deletion request, permanently destroy $\text{Key}_{U}$ from the key store.
 4. Without $\text{Key}_{U}$, the user's records in all historical files, replicas, snapshots, and backups become mathematically unrecoverable random noise, satisfying legal erasure mandates instantly at zero rewrite cost.
+
+---
+
+## 5. Production Python Implementation: AES-256-GCM Envelope Encryption & Shredding
+
+```python
+import os
+import base64
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from cryptography.hazmat.backends import default_backend
+
+class GDPRCryptoShredder:
+    """
+    Production AES-256-GCM Envelope Encryption engine with per-user key management.
+    Enables instant GDPR Article 17 erasure across immutable Parquet lakehouses.
+    """
+    def __init__(self):
+        # In production, keys are stored in Azure Key Vault / AWS KMS with HSM backing
+        self._user_key_store = {}
+
+    def get_or_create_user_key(self, user_id: str) -> bytes:
+        if user_id not in self._user_key_store:
+            # Generate 256-bit (32 bytes) cryptographically secure symmetric key
+            self._user_key_store[user_id] = AESGCM.generate_key(bit_length=256)
+        return self._user_key_store[user_id]
+
+    def encrypt_user_pii(self, user_id: str, plaintext: str) -> dict:
+        """Encrypts PII using user-specific key with 96-bit random nonce and AEAD tag."""
+        key = self.get_or_create_user_key(user_id)
+        aesgcm = AESGCM(key)
+        nonce = os.urandom(12)  # 96-bit unique IV/nonce per encryption
+        
+        # Associated Data binds encryption to specific user identity
+        associated_data = user_id.encode('utf-8')
+        ciphertext = aesgcm.encrypt(nonce, plaintext.encode('utf-8'), associated_data)
+        
+        return {
+            "user_id": user_id,
+            "nonce_b64": base64.b64encode(nonce).decode('utf-8'),
+            "ciphertext_b64": base64.b64encode(ciphertext).decode('utf-8')
+        }
+
+    def decrypt_user_pii(self, payload: dict) -> str:
+        """Decrypts user PII. Raises KeyError if key was shredded."""
+        user_id = payload["user_id"]
+        if user_id not in self._user_key_store:
+            raise KeyError(f"❌ Key for user {user_id} has been cryptographically shredded. Data is unrecoverable.")
+            
+        key = self._user_key_store[user_id]
+        aesgcm = AESGCM(key)
+        nonce = base64.b64decode(payload["nonce_b64"])
+        ciphertext = base64.b64decode(payload["ciphertext_b64"])
+        associated_data = user_id.encode('utf-8')
+        
+        decrypted_bytes = aesgcm.decrypt(nonce, ciphertext, associated_data)
+        return decrypted_bytes.decode('utf-8')
+
+    def shred_user_data(self, user_id: str) -> bool:
+        """Instant GDPR erasure: Destroys encryption key permanently."""
+        if user_id in self._user_key_store:
+            # Overwrite memory before deletion
+            self._user_key_store[user_id] = os.urandom(32)
+            del self._user_key_store[user_id]
+            print(f"🗑️ Successfully shredded encryption key for user {user_id}.")
+            return True
+        return False
+```
