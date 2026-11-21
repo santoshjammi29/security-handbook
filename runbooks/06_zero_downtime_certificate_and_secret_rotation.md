@@ -55,6 +55,38 @@ az keyvault secret set \
 #### Step 3: Rolling Restart / Refresh Applications
 Application pods dynamically fetch the new secret via Secrets Store CSI Driver or in-memory secret cache refresh. During the transition, pods using `v1` and pods using `v2` both authenticate successfully!
 
+```python
+# Production Python dynamic connection pool refresh with Key Vault version polling
+import time
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+from sqlalchemy import create_engine
+from sqlalchemy.pool import QueuePool
+
+class ResilientDatabasePool:
+    def __init__(self, vault_url: str, secret_name: str, base_conn_str: str):
+        self.vault_url = vault_url
+        self.secret_name = secret_name
+        self.base_conn_str = base_conn_str
+        self.client = SecretClient(vault_url=vault_url, credential=DefaultAzureCredential())
+        self.current_version = None
+        self.engine = None
+        self.refresh_pool()
+
+    def refresh_pool(self):
+        secret = self.client.get_secret(self.secret_name)
+        if secret.properties.version != self.current_version:
+            print(f"🔄 Rotating pool to secret version {secret.properties.version[:8]}...")
+            conn_url = self.base_conn_str.format(password=secret.value)
+            new_engine = create_engine(conn_url, poolclass=QueuePool, pool_size=10, max_overflow=20)
+            # Test connection before swapping
+            with new_engine.connect() as conn:
+                conn.execute("SELECT 1")
+            self.engine = new_engine
+            self.current_version = secret.properties.version
+            print("✅ Database connection pool gracefully rotated with zero downtime.")
+```
+
 #### Step 4: Discard Deprecated Password After Verification Window
 After 24 hours of stable metrics and zero authentication errors in database logs:
 ```sql
