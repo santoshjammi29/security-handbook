@@ -12,8 +12,8 @@
 flowchart TD
     Alert["SEV-2 Alert: SQL Injection or SSRF Attempt Detected in Data Pipeline"] --> Classify{"Vulnerability Type?"}
     
-    Classify -->|Server-Side Request Forgery (SSRF)| CheckDest{"Destination IP / URL?"}
-    CheckDest -->|Instance Metadata (169.254.169.254)| BlockIMDS["Phase 1: Block IMDS Metadata IP on Host Firewall / iptables"]
+    Classify -->|Server-Side Request Forgery SSRF| CheckDest{"Destination IP / URL?"}
+    CheckDest -->|Instance Metadata 169.254.169.254| BlockIMDS["Phase 1: Block IMDS Metadata IP on Host Firewall / iptables"]
     CheckDest -->|Internal Private Subnet Scan| BlockInternal["Phase 1: Enforce Strict Egress Allowlist on Webhook Activity"]
     
     Classify -->|SQL Injection Vulnerability| FindPipeline["Phase 1: Locate Offending Pipeline / SQL Query String"]

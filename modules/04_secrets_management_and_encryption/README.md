@@ -53,14 +53,14 @@ Rotating database credentials or API secrets without downtime requires supportin
 sequenceDiagram
     autonumber
     participant App as App / ETL Pipeline
-    participant Vault as Secret Vault (Azure Key Vault / AWS Secrets Manager)
+    participant Vault as Secret Vault
     participant DB as Target Database / API
-    participant Rotator as Automated Rotation Worker (Lambda / Azure Function)
+    participant Rotator as Automated Rotation Worker
 
     Note over Vault,DB: Normal State: Secret-v1 is active in App and DB
     Rotator->>DB: 1. Generate & Add Secret-v2 as valid credential in DB
     Rotator->>Vault: 2. Store Secret-v2 as pending/secondary version
-    Rotator->>Vault: 3. Promote Secret-v2 to active; mark Secret-v1 deprecated
+    Rotator->>Vault: 3. Promote Secret-v2 to active, mark Secret-v1 deprecated
     App->>Vault: 4. Periodic secret refresh fetches Secret-v2
     App->>DB: 5. App connects successfully using Secret-v2
     Rotator->>DB: 6. After 24-hour verification window, purge Secret-v1 from DB

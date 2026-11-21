@@ -38,7 +38,7 @@ Under **Secure Cluster Connectivity (No Public IP - NPIP)**:
 
 ```mermaid
 flowchart LR
-    ControlPlane["Databricks Control Plane (Managed by Cloud)"] <-->|Secure Relay Tunnel (Outbound 443)| WorkerNode["Databricks Worker Node (Private Subnet - 0 Public IPs)"]
+    ControlPlane["Databricks Control Plane (Managed by Cloud)"] <-->|Secure Relay Tunnel Outbound 443| WorkerNode["Databricks Worker Node (Private Subnet - 0 Public IPs)"]
 ```
 
 ---

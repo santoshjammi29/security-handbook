@@ -15,7 +15,7 @@ flowchart TD
         User["Client / Service / Pipeline"] --> Context["Context Evaluator (Identity, Device, Network, Time)"]
         Context --> PDP["Policy Decision Point (IdP / Entra ID / Okta / AWS IAM)"]
         PDP -->|Validate Claims & MFA| PEP["Policy Enforcement Point (API Gateway / Envoy / Lakehouse Gateway)"]
-        PEP -->|Issue Ephemeral JWT (15 min)| Resource["Protected Resource (Databricks, ADF, SQL, S3/ADLS)"]
+        PEP -->|Issue Ephemeral JWT 15 min| Resource["Protected Resource (Databricks, ADF, SQL, S3/ADLS)"]
         PEP -.-> Audit["Tamper-Evident Audit Stream (CloudTrail / Azure Monitor)"]
     end
 ```
