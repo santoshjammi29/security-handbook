@@ -9,7 +9,7 @@ flowchart TD
     subgraph CorporateVNet["Spoke Virtual Network (10.100.0.0/16)"]
         ComputeSubnet["Compute Subnet (10.100.1.0/24)<br>Databricks / ADF Self-Hosted IR / VMs"]
         EndpointSubnet["Private Endpoint Subnet (10.100.2.0/24)"]
-        
+
         ComputeSubnet -->|Internal NIC Traffic| PE["Private Endpoint NIC (10.100.2.15)"]
     end
 

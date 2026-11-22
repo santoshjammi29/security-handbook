@@ -11,14 +11,14 @@
 ```mermaid
 flowchart TD
     Alert["SEV-1 Alert: Anomalous Databricks Query / Leaked PAT Token"] --> RevokeToken["Phase 1: Revoke Compromised PAT Token via REST API Immediately"]
-    
+
     RevokeToken --> TerminateClusters["Phase 2: Terminate Compromised Clusters & Invalidate User Sessions"]
     TerminateClusters --> AuditSystem["Phase 3: Query system.access.audit Delta System Table"]
-    
+
     AuditSystem --> CheckExport{"Did Principal Execute downloadResult / Table Export?"}
     CheckExport -->|Yes| IsolateTables["Extract List of Exfiltrated Catalogs, Schemas & Rows"]
     CheckExport -->|No| CloseContainment["Verify Zero Data Egress Occurred"]
-    
+
     IsolateTables --> ReviewLineage["Phase 4: Query system.access.table_lineage for Blast Radius"]
     ReviewLineage --> RemediatePolicy["Phase 5: Restrict Workspace PAT Creation to Workspace Admins Only"]
     CloseContainment --> RemediatePolicy
@@ -52,7 +52,7 @@ databricks clusters list --output json | jq -r \
 ### Step 3: Query `system.access.audit` for All Tables Accessed by the Token
 ```sql
 -- Forensic Audit: Identify every query and table read by the compromised identity
-SELECT 
+SELECT
     event_time,
     user_identity.email AS principal_email,
     action_name,

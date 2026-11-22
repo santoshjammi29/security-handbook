@@ -32,7 +32,7 @@ flowchart TD
     User["Customer Data Ingestion"] --> KeyStore["Generate / Fetch Per-User Encryption Key (KEK_User101) in Key Vault"]
     KeyStore --> Encrypt["Encrypt User PII with KEK_User101 before writing to Parquet"]
     Encrypt --> Lakehouse["Write to Immutable Delta Lake Parquet Files"]
-    
+
     GDPR["GDPR Deletion Request Received"] --> Destroy["Destroy KEK_User101 from Key Vault"]
     Destroy --> Result["User PII in all historical Parquet files becomes mathematically unrecoverable ciphertext!"]
 ```

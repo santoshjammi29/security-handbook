@@ -71,13 +71,13 @@ flowchart TD
 -- UDF compiled into the physical project operator
 CREATE OR REPLACE FUNCTION mask_credit_card(cc STRING)
 RETURNS STRING
-RETURN CASE 
+RETURN CASE
     WHEN is_account_group_member('pci_compliance_auditors') THEN cc
     ELSE CONCAT('XXXX-XXXX-XXXX-', RIGHT(cc, 4))
 END;
 
-ALTER TABLE prod_sales.payments.transactions 
-ALTER COLUMN card_number 
+ALTER TABLE prod_sales.payments.transactions
+ALTER COLUMN card_number
 SET MASK mask_credit_card;
 ```
 When an unprivileged analyst executes a query, the Spark physical plan replaces the project reference to `card_number` with the deterministic scalar expression `mask_credit_card(card_number)`. The plaintext values never enter memory buffers on the user's local driver.

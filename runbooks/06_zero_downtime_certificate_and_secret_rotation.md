@@ -11,18 +11,18 @@
 ```mermaid
 flowchart TD
     Trigger["Secret / TLS Certificate Expiry Approaching (< 14 Days)"] --> SelectType{"Secret Type?"}
-    
+
     SelectType -->|TLS / mTLS Certificate| CertStage["Phase 1: Stage New Certificate in Key Vault alongside Old Cert"]
     SelectType -->|Database Password| DualSecret["Phase 1: Create Secondary Database User / Dual-Credential"]
     SelectType -->|OAuth Service Principal Secret| DualSP["Phase 1: Generate Second Client Secret on App Registration"]
-    
+
     CertStage --> HotReload["Phase 2: Hot-Reload Certificate on Reverse Proxy / Ingress (Envoy/Nginx)"]
     DualSecret --> UpdateVault["Phase 2: Update Secrets Manager with New Credential as Active Version"]
     DualSP --> UpdateVault
-    
+
     HotReload --> VerifyTraffic["Phase 3: Verify Zero Handshake Failures on TLS Monitoring"]
     UpdateVault --> VerifyTraffic
-    
+
     VerifyTraffic --> RolloverWindow{"Rollover Window Complete (24h) & Zero Errors?"}
     RolloverWindow -->|Yes| RevokeOld["Phase 4: Safely Purge & Invalidate Deprecated Secret Version"]
     RolloverWindow -->|No: Connection Failures Detected| Rollback["Emergency Rollback: Re-instate Previous Secret in Vault"]

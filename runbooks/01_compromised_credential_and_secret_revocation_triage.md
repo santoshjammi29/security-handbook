@@ -11,18 +11,18 @@
 ```mermaid
 flowchart TD
     Alert["SEV-1 Alert: Leaked Credential Detected (Gitleaks / CloudWatch / SecOps)"] --> Isolate{"Credential Type?"}
-    
+
     Isolate -->|Cloud Service Principal / IAM User| RevokeSP["Phase 1: Invalidate Key / Secret in Entra ID or AWS IAM"]
     Isolate -->|Databricks Personal Access Token PAT| RevokePAT["Phase 1: Revoke PAT via Databricks Token API"]
     Isolate -->|Database Connection String| RotateDB["Phase 1: Trigger Dual-Secret Rollover in Vault & Target DB"]
-    
+
     RevokeSP --> TerminateSessions["Phase 2: Terminate Active Sessions & Invalidate Ephemeral Tokens"]
     RevokePAT --> TerminateSessions
     RotateDB --> TerminateSessions
-    
+
     TerminateSessions --> ScopeAudit["Phase 3: Forensic Audit Log Analysis (CloudTrail / Azure Activity)"]
     ScopeAudit --> ExfilCheck{"Was Data Exfiltrated?"}
-    
+
     ExfilCheck -->|Yes| LegalNotify["Trigger Legal & Regulatory Breach Protocol (< 72h GDPR/SEC)"]
     ExfilCheck -->|No| LandFix["Re-issue Ephemeral OIDC Federated Identity & Close Incident"]
 ```

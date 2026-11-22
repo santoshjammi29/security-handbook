@@ -11,16 +11,16 @@
 ```mermaid
 flowchart TD
     Alert["SEV-1 Alert: Storage Account Publicly Accessible or Anomalous Egress Spike"] --> Action1["Phase 1: Terminate Public Network Access Immediately"]
-    
+
     Action1 --> ApplyFirewall["Set PublicNetworkAccess = Disabled & Apply Storage Firewall"]
     ApplyFirewall --> CheckActive["Phase 2: Check Active Connections & Terminate Rogue SAS / IAM Roles"]
-    
+
     CheckActive --> AuditLogs["Phase 3: Forensic Log Ingestion (Storage Read Logs / VPC Flow Logs)"]
     AuditLogs --> DataClass{"Did Downloaded Objects Contain PII / Financial Data?"}
-    
+
     DataClass -->|Yes: Confirmed Breach| BreachTeam["Activate Crisis Communications & Legal Notification (< 72h)"]
     DataClass -->|No: Public Read Only| Remediation["Phase 4: Rotate Storage Keys & Migrate to Private Endpoints Only"]
-    
+
     BreachTeam --> PostMortem["Phase 5: Automated Policy-as-Code Guardrail Enforcement"]
     Remediation --> PostMortem
 ```
@@ -82,7 +82,7 @@ Identify what IP addresses accessed the bucket and total bytes exfiltrated:
 
 ```sql
 -- Azure Log Analytics / Synapse Serverless Query over Storage Read Logs
-SELECT 
+SELECT
     TimeGenerated,
     CallerIpAddress,
     Uri,

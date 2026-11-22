@@ -19,7 +19,7 @@ flowchart TD
 ```
 
 ### Why AES-256-GCM (Galois/Counter Mode)?
-Traditional AES cipher block chaining (CBC) modes require separate HMAC computations to detect tampering and are vulnerable to padding oracle attacks. 
+Traditional AES cipher block chaining (CBC) modes require separate HMAC computations to detect tampering and are vulnerable to padding oracle attacks.
 
 **AES-256-GCM is an Authenticated Encryption with Associated Data (AEAD) algorithm**:
 - Encrypts plaintext into ciphertext using a counter mode stream.
@@ -110,11 +110,11 @@ class GDPRCryptoShredder:
         key = self.get_or_create_user_key(user_id)
         aesgcm = AESGCM(key)
         nonce = os.urandom(12)  # 96-bit unique IV/nonce per encryption
-        
+
         # Associated Data binds encryption to specific user identity
         associated_data = user_id.encode('utf-8')
         ciphertext = aesgcm.encrypt(nonce, plaintext.encode('utf-8'), associated_data)
-        
+
         return {
             "user_id": user_id,
             "nonce_b64": base64.b64encode(nonce).decode('utf-8'),
@@ -126,13 +126,13 @@ class GDPRCryptoShredder:
         user_id = payload["user_id"]
         if user_id not in self._user_key_store:
             raise KeyError(f"❌ Key for user {user_id} has been cryptographically shredded. Data is unrecoverable.")
-            
+
         key = self._user_key_store[user_id]
         aesgcm = AESGCM(key)
         nonce = base64.b64decode(payload["nonce_b64"])
         ciphertext = base64.b64decode(payload["ciphertext_b64"])
         associated_data = user_id.encode('utf-8')
-        
+
         decrypted_bytes = aesgcm.decrypt(nonce, ciphertext, associated_data)
         return decrypted_bytes.decode('utf-8')
 
