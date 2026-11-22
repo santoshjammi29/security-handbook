@@ -52,23 +52,23 @@ flowchart LR
 -- Define Column Mask Function
 CREATE OR REPLACE FUNCTION mask_ssn(ssn STRING)
 RETURNS STRING
-RETURN CASE 
+RETURN CASE
     WHEN is_account_group_member('hr_payroll_auditors') THEN ssn
     ELSE CONCAT('***-**-', SUBSTRING(ssn, 8, 4))
 END;
 
 -- Apply Mask to Table
-ALTER TABLE prod_hr.payroll.employees 
-ALTER COLUMN ssn_number 
+ALTER TABLE prod_hr.payroll.employees
+ALTER COLUMN ssn_number
 SET MASK mask_ssn;
 
 -- Define Row-Level Security Filter Function
 CREATE OR REPLACE FUNCTION region_filter(region STRING)
 RETURNS BOOLEAN
-RETURN is_account_group_member('global_executives') OR 
+RETURN is_account_group_member('global_executives') OR
        is_account_group_member(CONCAT('analysts_', LOWER(region)));
 
 -- Apply Row Filter
-ALTER TABLE prod_sales.analytics.orders 
+ALTER TABLE prod_sales.analytics.orders
 SET ROW FILTER region_filter ON (sales_region);
 ```

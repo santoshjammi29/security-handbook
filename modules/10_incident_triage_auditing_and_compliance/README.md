@@ -30,7 +30,7 @@ Databricks Unity Catalog automatically streams audit logs directly into queryabl
 
 ```sql
 -- Forensic Query: Identify all data exported by a compromised Service Principal
-SELECT 
+SELECT
     event_time,
     user_identity.email AS principal_email,
     action_name,

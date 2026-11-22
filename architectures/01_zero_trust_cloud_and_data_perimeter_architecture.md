@@ -71,7 +71,7 @@ In data processing environments, worker nodes must download Python packages, que
   *.privatelink.blob.core.windows.net:443
   *.privatelink.dfs.core.windows.net:443
   api.databricks.com:443
-  
+
   # Deny all other outbound HTTP/HTTPS destinations by default!
   ```
 - **TLS Inspection & SNI Validation**: Firewalls inspect the Server Name Indication (SNI) in the TLS ClientHello packet, terminating connections attempting to disguise outbound traffic over port 443.
