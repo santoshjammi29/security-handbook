@@ -871,8 +871,6 @@ Prepare for technical security screens from Junior Data Engineer to Principal Se
 
 </details>
 
-
-
 ## 🛠️ Repository Structure
 
 ```
@@ -935,7 +933,6 @@ The Modern Data Engineering Lakehouse Ecosystem is an integrated suite of 14 pro
 Contributions, new security runbooks, and cloud architecture patterns are welcome!  
 Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.  
 Created and maintained with ❤️ by [Santosh Jammi](https://github.com/santoshjammi29).
-
 
 ---
 
