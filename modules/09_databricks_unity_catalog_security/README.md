@@ -9,15 +9,15 @@ Legacy Databricks deployments relied on root DBFS mounts (`/mnt/...`), AWS IAM i
 ```mermaid
 flowchart TD
     subgraph UC3Tier["Unity Catalog 3-Tier Namespace Structure"]
-        Catalog["1. Catalog (e.g. prod_lakehouse)"] --> Schema["2. Schema / Database (e.g. finance)"]
+        Catalog["1. Catalog (e.g. prod_lakehouse)"] --> Schema["2. Schema / Database (e.g.<br/>finance)"]
         Schema --> Table["3. Table (Delta Lake Table)"]
         Schema --> View["3. View (Dynamic Masking View)"]
-        Schema --> Volume["3. Volume (Unstructured / Parquet Files)"]
+        Schema --> Volume["3. Volume (Unstructured / Parquet<br/>Files)"]
     end
 
     subgraph SecurityTier["Decoupled Storage & Credential Tier"]
-        ExtLoc["External Location (s3://... or abfss://...)"]
-        StorageCred["Storage Credential (Managed Identity / IAM Role)"]
+        ExtLoc["External Location (s3://... or<br/>abfss://...)"]
+        StorageCred["Storage Credential (Managed<br/>Identity / IAM Role)"]
         ExtLoc --> StorageCred
     end
 

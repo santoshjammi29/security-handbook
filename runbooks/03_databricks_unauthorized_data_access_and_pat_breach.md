@@ -10,17 +10,17 @@
 
 ```mermaid
 flowchart TD
-    Alert["SEV-1 Alert: Anomalous Databricks Query / Leaked PAT Token"] --> RevokeToken["Phase 1: Revoke Compromised PAT Token via REST API Immediately"]
+    Alert["SEV-1 Alert: Anomalous Databricks<br/>Query / Leaked PAT Token"] --> RevokeToken["Phase 1: Revoke Compromised PAT<br/>Token via REST API Immediately"]
 
-    RevokeToken --> TerminateClusters["Phase 2: Terminate Compromised Clusters & Invalidate User Sessions"]
-    TerminateClusters --> AuditSystem["Phase 3: Query system.access.audit Delta System Table"]
+    RevokeToken --> TerminateClusters["Phase 2: Terminate Compromised<br/>Clusters & Invalidate User<br/>Sessions"]
+    TerminateClusters --> AuditSystem["Phase 3: Query system.access.audit<br/>Delta System Table"]
 
-    AuditSystem --> CheckExport{"Did Principal Execute downloadResult / Table Export?"}
-    CheckExport -->|Yes| IsolateTables["Extract List of Exfiltrated Catalogs, Schemas & Rows"]
+    AuditSystem --> CheckExport{"Did Principal Execute<br/>downloadResult / Table Export?"}
+    CheckExport -->|Yes| IsolateTables["Extract List of Exfiltrated<br/>Catalogs, Schemas & Rows"]
     CheckExport -->|No| CloseContainment["Verify Zero Data Egress Occurred"]
 
-    IsolateTables --> ReviewLineage["Phase 4: Query system.access.table_lineage for Blast Radius"]
-    ReviewLineage --> RemediatePolicy["Phase 5: Restrict Workspace PAT Creation to Workspace Admins Only"]
+    IsolateTables --> ReviewLineage["Phase 4: Query<br/>system.access.table_lineage for<br/>Blast Radius"]
+    ReviewLineage --> RemediatePolicy["Phase 5: Restrict Workspace PAT<br/>Creation to Workspace Admins Only"]
     CloseContainment --> RemediatePolicy
 ```
 

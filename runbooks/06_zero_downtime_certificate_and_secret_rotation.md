@@ -10,22 +10,22 @@
 
 ```mermaid
 flowchart TD
-    Trigger["Secret / TLS Certificate Expiry Approaching (< 14 Days)"] --> SelectType{"Secret Type?"}
+    Trigger["Secret / TLS Certificate Expiry<br/>Approaching (&lt; 14 Days)"] --> SelectType{"Secret Type?"}
 
-    SelectType -->|TLS / mTLS Certificate| CertStage["Phase 1: Stage New Certificate in Key Vault alongside Old Cert"]
-    SelectType -->|Database Password| DualSecret["Phase 1: Create Secondary Database User / Dual-Credential"]
-    SelectType -->|OAuth Service Principal Secret| DualSP["Phase 1: Generate Second Client Secret on App Registration"]
+    SelectType -->|"TLS / mTLS Certificate"| CertStage["Phase 1: Stage New Certificate in<br/>Key Vault alongside Old Cert"]
+    SelectType -->|Database Password| DualSecret["Phase 1: Create Secondary Database<br/>User / Dual-Credential"]
+    SelectType -->|OAuth Service Principal Secret| DualSP["Phase 1: Generate Second Client<br/>Secret on App Registration"]
 
-    CertStage --> HotReload["Phase 2: Hot-Reload Certificate on Reverse Proxy / Ingress (Envoy/Nginx)"]
-    DualSecret --> UpdateVault["Phase 2: Update Secrets Manager with New Credential as Active Version"]
+    CertStage --> HotReload["Phase 2: Hot-Reload Certificate on<br/>Reverse Proxy / Ingress<br/>(Envoy/Nginx)"]
+    DualSecret --> UpdateVault["Phase 2: Update Secrets Manager<br/>with New Credential as Active<br/>Version"]
     DualSP --> UpdateVault
 
-    HotReload --> VerifyTraffic["Phase 3: Verify Zero Handshake Failures on TLS Monitoring"]
+    HotReload --> VerifyTraffic["Phase 3: Verify Zero Handshake<br/>Failures on TLS Monitoring"]
     UpdateVault --> VerifyTraffic
 
-    VerifyTraffic --> RolloverWindow{"Rollover Window Complete (24h) & Zero Errors?"}
-    RolloverWindow -->|Yes| RevokeOld["Phase 4: Safely Purge & Invalidate Deprecated Secret Version"]
-    RolloverWindow -->|No: Connection Failures Detected| Rollback["Emergency Rollback: Re-instate Previous Secret in Vault"]
+    VerifyTraffic --> RolloverWindow{"Rollover Window Complete (24h) &<br/>Zero Errors?"}
+    RolloverWindow -->|Yes| RevokeOld["Phase 4: Safely Purge & Invalidate<br/>Deprecated Secret Version"]
+    RolloverWindow -->|"No: Connection Failures<br/>Detected"| Rollback["Emergency Rollback: Re-instate<br/>Previous Secret in Vault"]
 ```
 
 ---

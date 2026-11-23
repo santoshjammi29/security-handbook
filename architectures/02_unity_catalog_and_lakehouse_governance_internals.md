@@ -59,10 +59,10 @@ In Unity Catalog, row-level security and column-level masking are not applied as
 ```mermaid
 flowchart TD
     subgraph QueryCompilation["Catalyst Optimizer Compilation Pipeline"]
-        AST["Raw SQL Query AST<br>SELECT id, ssn, salary FROM employees"] --> Resolve["Catalog Resolution (Resolve Column Types & Masks)"]
-        Resolve --> Rewrite["Plan Rewriting with Mask Function UDF"]
-        Rewrite --> PredicatePush["Predicate Pushdown & Dynamic Row Filter Inlining"]
-        PredicatePush --> ExecPlan["Physical Execution Plan (Pushdown Parquet Scan)"]
+        AST["Raw SQL Query AST<br/>SELECT id, ssn, salary FROM<br/>employees"] --> Resolve["Catalog Resolution (Resolve Column<br/>Types & Masks)"]
+        Resolve --> Rewrite["Plan Rewriting with Mask Function<br/>UDF"]
+        Rewrite --> PredicatePush["Predicate Pushdown & Dynamic Row<br/>Filter Inlining"]
+        PredicatePush --> ExecPlan["Physical Execution Plan (Pushdown<br/>Parquet Scan)"]
     end
 ```
 

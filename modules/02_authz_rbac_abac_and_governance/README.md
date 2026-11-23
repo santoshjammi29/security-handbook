@@ -7,9 +7,9 @@ Enterprise authorization models determine how subjects (users, service principal
 ```mermaid
 flowchart TD
     subgraph AuthZModels["Authorization Models Comparison"]
-        RBAC["RBAC: Role-Based Access Control"] --> RBAC_Def["Role = Fixed Set of Permissions. User assigned to Roles."]
-        ABAC["ABAC: Attribute-Based Access Control"] --> ABAC_Def["Policy evaluated on Subject + Resource + Action + Environment Attributes."]
-        ReBAC["ReBAC: Relationship-Based Access Control"] --> ReBAC_Def["Permissions derived from graph relationships (Google Zanzibar model)."]
+        RBAC["RBAC: Role-Based Access Control"] --> RBAC_Def["Role = Fixed Set of Permissions.<br/>User assigned to Roles."]
+        ABAC["ABAC: Attribute-Based Access<br/>Control"] --> ABAC_Def["Policy evaluated on Subject +<br/>Resource + Action + Environment<br/>Attributes."]
+        ReBAC["ReBAC: Relationship-Based Access<br/>Control"] --> ReBAC_Def["Permissions derived from graph<br/>relationships (Google Zanzibar<br/>model)."]
     end
 ```
 
@@ -41,9 +41,9 @@ Data warehouses and lakehouses must protect Personally Identifiable Information 
 
 ```mermaid
 flowchart LR
-    Query["User / App Query: SELECT id, ssn, salary FROM hr_data"] --> Engine["Query Engine Filter & Masking Layer"]
+    Query["User / App Query: SELECT id, ssn,<br/>salary FROM hr_data"] --> Engine["Query Engine Filter & Masking<br/>Layer"]
     Engine --> Check{"User in 'HR_PAYROLL' Group?"}
-    Check -->|Yes| Raw["Return Plaintext: 123-45-6789, $145,000"]
+    Check -->|Yes| Raw["Return Plaintext: 123-45-6789,<br/>$145,000"]
     Check -->|No| Masked["Return Masked: ***-**-6789, NULL"]
 ```
 

@@ -15,11 +15,11 @@ Modern enterprise data engineering operates across multi-cloud infrastructure, S
 flowchart TD
     subgraph ZeroTrustPerimeter["Zero-Trust Cloud & Data Perimeter"]
         direction TB
-        IdentityTier["1. Identity Perimeter<br>(Entra ID / AWS IAM / Okta + Conditional Access)"]
-        NetworkTier["2. Network Perimeter<br>(Private Link, Private Endpoints, NSG Micro-segmentation)"]
-        ComputeTier["3. Compute Perimeter<br>(No Public IP Clusters, Distroless Containers, OIDC Workloads)"]
-        DataTier["4. Storage & Data Perimeter<br>(Storage Firewalls, Dynamic Row/Column Masks, Customer-Managed Keys)"]
-        AuditTier["5. Unified Telemetry & Governance<br>(Audit System Tables, SIEM Sentinel/Splunk, Continuous Detection)"]
+        IdentityTier["1. Identity Perimeter<br/>(Entra ID / AWS IAM / Okta +<br/>Conditional Access)"]
+        NetworkTier["2. Network Perimeter<br/>(Private Link, Private Endpoints,<br/>NSG Micro-segmentation)"]
+        ComputeTier["3. Compute Perimeter<br/>(No Public IP Clusters, Distroless<br/>Containers, OIDC Workloads)"]
+        DataTier["4. Storage & Data Perimeter<br/>(Storage Firewalls, Dynamic<br/>Row/Column Masks, Customer-Managed<br/>Keys)"]
+        AuditTier["5. Unified Telemetry & Governance<br/>(Audit System Tables, SIEM<br/>Sentinel/Splunk, Continuous<br/>Detection)"]
     end
 
     IdentityTier --> NetworkTier --> ComputeTier --> DataTier --> AuditTier
@@ -39,13 +39,13 @@ Exposing cloud data lakes (ADLS Gen2, AWS S3) or analytical query engines (Snowf
 ```mermaid
 flowchart LR
     subgraph CustomerVNet["Enterprise Spoke VNet (10.200.0.0/16)"]
-        SparkDriver["Spark Driver / Worker Node<br>(IP: 10.200.1.5)"]
-        PrivateNIC["Private Endpoint Virtual NIC<br>(IP: 10.200.4.10)"]
+        SparkDriver["Spark Driver / Worker Node<br/>(IP: 10.200.1.5)"]
+        PrivateNIC["Private Endpoint Virtual NIC<br/>(IP: 10.200.4.10)"]
         SparkDriver -->|Local VNet Routing| PrivateNIC
     end
 
-    subgraph CloudBackbone["Cloud Provider Internal Backbone (Encrypted Tunnel)"]
-        PrivateNIC -->|Private Link Tunnel| ADLS["Azure Data Lake Storage Gen2 / S3<br>(Public Access: Disabled)"]
+    subgraph CloudBackbone["Cloud Provider Internal Backbone (Encrypted<br/>Tunnel)"]
+        PrivateNIC -->|Private Link Tunnel| ADLS["Azure Data Lake Storage Gen2 / S3<br/>(Public Access: Disabled)"]
     end
 ```
 

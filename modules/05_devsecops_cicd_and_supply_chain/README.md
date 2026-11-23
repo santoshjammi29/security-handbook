@@ -6,10 +6,10 @@ DevSecOps integrates automated security controls into every stage of the softwar
 
 ```mermaid
 flowchart LR
-    Dev["1. Local Dev<br>(Pre-commit Gitleaks, Bandit)"] --> PR["2. Pull Request<br>(SAST, pip-audit, Checkov IaC)"]
-    PR --> Build["3. Build & Package<br>(SBOM Generation, Trivy Container Scan)"]
-    Build --> Sign["4. Sign & Attest<br>(Cosign Keyless Signature, SLSA)"]
-    Sign --> Deploy["5. CD Deployment<br>(OIDC Workload Identity, Policy Gates)"]
+    Dev["1. Local Dev<br/>(Pre-commit Gitleaks, Bandit)"] --> PR["2. Pull Request<br/>(SAST, pip-audit, Checkov IaC)"]
+    PR --> Build["3. Build & Package<br/>(SBOM Generation, Trivy Container<br/>Scan)"]
+    Build --> Sign["4. Sign & Attest<br/>(Cosign Keyless Signature, SLSA)"]
+    Sign --> Deploy["5. CD Deployment<br/>(OIDC Workload Identity, Policy<br/>Gates)"]
 ```
 
 ---

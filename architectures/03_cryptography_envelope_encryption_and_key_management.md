@@ -12,9 +12,9 @@ Modern cloud data platforms process terabytes of data daily. Ensuring confidenti
 ```mermaid
 flowchart TD
     subgraph CryptoTaxonomy["Data Platform Cryptographic Primitives"]
-        Sym["Symmetric Encryption (AES-256-GCM)"] --> Sym_Use["High-throughput bulk data encryption (Parquet files, temp spills). Fast, hardware-accelerated (AES-NI)."]
-        Asym["Asymmetric Encryption (RSA-4096 / ECDSA)"] --> Asym_Use["Identity assertions, JWT signing, TLS handshakes, key exchange."]
-        Hash["Cryptographic Hashing & MAC (HMAC-SHA256, SHA-3)"] --> Hash_Use["Deterministic tokenization, surrogate key generation, data integrity checks."]
+        Sym["Symmetric Encryption (AES-256-GCM)"] --> Sym_Use["High-throughput bulk data<br/>encryption (Parquet files, temp<br/>spills). Fast,<br/>hardware-accelerated (AES-NI)."]
+        Asym["Asymmetric Encryption (RSA-4096 /<br/>ECDSA)"] --> Asym_Use["Identity assertions, JWT signing,<br/>TLS handshakes, key exchange."]
+        Hash["Cryptographic Hashing & MAC<br/>(HMAC-SHA256, SHA-3)"] --> Hash_Use["Deterministic tokenization,<br/>surrogate key generation, data<br/>integrity checks."]
     end
 ```
 

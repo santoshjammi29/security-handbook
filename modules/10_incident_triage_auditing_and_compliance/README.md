@@ -6,9 +6,9 @@ When a security event occurs in a cloud lakehouse (e.g. leaked credentials, unau
 
 ```mermaid
 flowchart TD
-    Detect["1. Detection & Analysis<br>(SIEM Alert, CloudTrail Anomaly, Audit Spikes)"] --> Contain["2. Containment<br>(Revoke Credentials, Sever Network, Quarantine Bucket)"]
-    Contain --> Eradicate["3. Eradication & Recovery<br>(Purge Backdoors, Restore from Immutable Snapshots)"]
-    Eradicate --> PostMortem["4. Post-Incident Activity<br>(Root Cause Analysis, IOC Disclosure, Regulatory Filing)"]
+    Detect["1. Detection & Analysis<br/>(SIEM Alert, CloudTrail Anomaly,<br/>Audit Spikes)"] --> Contain["2. Containment<br/>(Revoke Credentials, Sever<br/>Network, Quarantine Bucket)"]
+    Contain --> Eradicate["3. Eradication & Recovery<br/>(Purge Backdoors, Restore from<br/>Immutable Snapshots)"]
+    Eradicate --> PostMortem["4. Post-Incident Activity<br/>(Root Cause Analysis, IOC<br/>Disclosure, Regulatory Filing)"]
 ```
 
 ### Critical Severity Triage Protocol:

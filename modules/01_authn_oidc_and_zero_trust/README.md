@@ -12,11 +12,11 @@ The **Zero-Trust Architecture (NIST SP 800-207)** enforces three non-negotiable 
 ```mermaid
 flowchart TD
     subgraph ZeroTrustFlow["Zero-Trust Continuous Verification Engine"]
-        User["Client / Service / Pipeline"] --> Context["Context Evaluator (Identity, Device, Network, Time)"]
-        Context --> PDP["Policy Decision Point (IdP / Entra ID / Okta / AWS IAM)"]
-        PDP -->|Validate Claims & MFA| PEP["Policy Enforcement Point (API Gateway / Envoy / Lakehouse Gateway)"]
-        PEP -->|Issue Ephemeral JWT 15 min| Resource["Protected Resource (Databricks, ADF, SQL, S3/ADLS)"]
-        PEP -.-> Audit["Tamper-Evident Audit Stream (CloudTrail / Azure Monitor)"]
+        User["Client / Service / Pipeline"] --> Context["Context Evaluator (Identity,<br/>Device, Network, Time)"]
+        Context --> PDP["Policy Decision Point (IdP / Entra<br/>ID / Okta / AWS IAM)"]
+        PDP -->|"Validate Claims & MFA"| PEP["Policy Enforcement Point (API<br/>Gateway / Envoy / Lakehouse<br/>Gateway)"]
+        PEP -->|Issue Ephemeral JWT 15 min| Resource["Protected Resource (Databricks,<br/>ADF, SQL, S3/ADLS)"]
+        PEP -.-> Audit["Tamper-Evident Audit Stream<br/>(CloudTrail / Azure Monitor)"]
     end
 ```
 

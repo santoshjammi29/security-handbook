@@ -7,15 +7,15 @@ In an enterprise cloud lakehouse, **no storage account, database instance, or co
 ```mermaid
 flowchart TD
     subgraph CorporateVNet["Spoke Virtual Network (10.100.0.0/16)"]
-        ComputeSubnet["Compute Subnet (10.100.1.0/24)<br>Databricks / ADF Self-Hosted IR / VMs"]
-        EndpointSubnet["Private Endpoint Subnet (10.100.2.0/24)"]
+        ComputeSubnet["Compute Subnet (10.100.1.0/24)<br/>Databricks / ADF Self-Hosted IR /<br/>VMs"]
+        EndpointSubnet["Private Endpoint Subnet<br/>(10.100.2.0/24)"]
 
         ComputeSubnet -->|Internal NIC Traffic| PE["Private Endpoint NIC (10.100.2.15)"]
     end
 
-    subgraph GlobalBackbone["Cloud Provider Private Backbone (No Internet Exposure)"]
+    subgraph GlobalBackbone["Cloud Provider Private Backbone (No Internet<br/>Exposure)"]
         PE -->|Private Link Tunnel| StorageService["Storage Tier (ADLS Gen2 / AWS S3)"]
-        PE -->|Private Link Tunnel| DatabaseService["Database Tier (SQL / Snowflake / Aurora)"]
+        PE -->|Private Link Tunnel| DatabaseService["Database Tier (SQL / Snowflake /<br/>Aurora)"]
     end
 ```
 
@@ -38,7 +38,7 @@ Under **Secure Cluster Connectivity (No Public IP - NPIP)**:
 
 ```mermaid
 flowchart LR
-    ControlPlane["Databricks Control Plane (Managed by Cloud)"] <-->|Secure Relay Tunnel Outbound 443| WorkerNode["Databricks Worker Node (Private Subnet - 0 Public IPs)"]
+    ControlPlane["Databricks Control Plane (Managed<br/>by Cloud)"] <-->|"Secure Relay Tunnel Outbound<br/>443"| WorkerNode["Databricks Worker Node (Private<br/>Subnet - 0 Public IPs)"]
 ```
 
 ---

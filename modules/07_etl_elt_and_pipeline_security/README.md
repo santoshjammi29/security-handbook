@@ -8,10 +8,10 @@ The **Write-Audit-Publish (WAP)** pattern decouples data writing from production
 
 ```mermaid
 flowchart TD
-    Raw["1. Ingest Ingress Data"] --> Write["2. Write to Isolated Branch / Staging Snapshot (Delta Lake / Iceberg)"]
-    Write --> Audit{"3. Automated Security & Quality Audit Gate"}
-    Audit -->|Pass: Zero PII Leaks, Schema Valid| Publish["4. Publish: Fast Metadata Fast-Forward / Merge to Production"]
-    Audit -->|Fail: Unmasked SSN Detected, Malformed| Abort["5. Abort: Drop Staging Branch & Alert SecOps Team"]
+    Raw["1. Ingest Ingress Data"] --> Write["2. Write to Isolated Branch /<br/>Staging Snapshot (Delta Lake /<br/>Iceberg)"]
+    Write --> Audit{"3. Automated Security & Quality<br/>Audit Gate"}
+    Audit -->|"Pass: Zero PII Leaks, Schema<br/>Valid"| Publish["4. Publish: Fast Metadata<br/>Fast-Forward / Merge to Production"]
+    Audit -->|"Fail: Unmasked SSN Detected,<br/>Malformed"| Abort["5. Abort: Drop Staging Branch &<br/>Alert SecOps Team"]
 ```
 
 ### Security Audit Assertions:
@@ -29,12 +29,12 @@ In distributed lakehouses (Delta Lake, Apache Iceberg), historical data is writt
 
 ```mermaid
 flowchart TD
-    User["Customer Data Ingestion"] --> KeyStore["Generate / Fetch Per-User Encryption Key (KEK_User101) in Key Vault"]
-    KeyStore --> Encrypt["Encrypt User PII with KEK_User101 before writing to Parquet"]
-    Encrypt --> Lakehouse["Write to Immutable Delta Lake Parquet Files"]
+    User["Customer Data Ingestion"] --> KeyStore["Generate / Fetch Per-User<br/>Encryption Key (KEK_User101) in<br/>Key Vault"]
+    KeyStore --> Encrypt["Encrypt User PII with KEK_User101<br/>before writing to Parquet"]
+    Encrypt --> Lakehouse["Write to Immutable Delta Lake<br/>Parquet Files"]
 
     GDPR["GDPR Deletion Request Received"] --> Destroy["Destroy KEK_User101 from Key Vault"]
-    Destroy --> Result["User PII in all historical Parquet files becomes mathematically unrecoverable ciphertext!"]
+    Destroy --> Result["User PII in all historical Parquet<br/>files becomes mathematically<br/>unrecoverable ciphertext!"]
 ```
 
 ### Advantages of Crypto-Shredding:

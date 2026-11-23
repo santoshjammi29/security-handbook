@@ -10,20 +10,20 @@
 
 ```mermaid
 flowchart TD
-    Alert["SEV-1 Alert: Lakehouse Tables Deleted or Encrypted by Ransomware"] --> AssessType{"Was Delta Table Dropped or Overwritten?"}
+    Alert["SEV-1 Alert: Lakehouse Tables<br/>Deleted or Encrypted by Ransomware"] --> AssessType{"Was Delta Table Dropped or<br/>Overwritten?"}
 
-    AssessType -->|Table Overwritten / Malicious DELETE| CheckHistory["Phase 1: Query DESCRIBE HISTORY on Delta Table"]
-    CheckHistory --> RestoreTT["Phase 2: Execute RESTORE TABLE TO TIMESTAMP AS OF Clean State"]
+    AssessType -->|"Table Overwritten / Malicious<br/>DELETE"| CheckHistory["Phase 1: Query DESCRIBE HISTORY on<br/>Delta Table"]
+    CheckHistory --> RestoreTT["Phase 2: Execute RESTORE TABLE TO<br/>TIMESTAMP AS OF Clean State"]
 
-    AssessType -->|Table Dropped / Underlying Files Deleted| CheckWORM{"Is Storage Protected by Immutable WORM / Object Lock?"}
-    CheckWORM -->|Yes: Soft-Delete & WORM Enabled| RecoverStorage["Phase 2: Restore Parquet from Immutable Object Versioning"]
-    CheckWORM -->|No: Hard Delete| RestoreAirgap["Phase 2: Restore from Isolated Air-Gapped Backup Vault"]
+    AssessType -->|"Table Dropped / Underlying<br/>Files Deleted"| CheckWORM{"Is Storage Protected by Immutable<br/>WORM / Object Lock?"}
+    CheckWORM -->|"Yes: Soft-Delete & WORM<br/>Enabled"| RecoverStorage["Phase 2: Restore Parquet from<br/>Immutable Object Versioning"]
+    CheckWORM -->|"No: Hard Delete"| RestoreAirgap["Phase 2: Restore from Isolated<br/>Air-Gapped Backup Vault"]
 
-    RestoreTT --> VerifyIntegrity["Phase 3: Verify Data Integrity Checksums & Row Counts"]
+    RestoreTT --> VerifyIntegrity["Phase 3: Verify Data Integrity<br/>Checksums & Row Counts"]
     RecoverStorage --> VerifyIntegrity
     RestoreAirgap --> VerifyIntegrity
 
-    VerifyIntegrity --> ForensicAudit["Phase 4: Forensically Isolate Compromised Account & Patch Vector"]
+    VerifyIntegrity --> ForensicAudit["Phase 4: Forensically Isolate<br/>Compromised Account & Patch Vector"]
 ```
 
 ---

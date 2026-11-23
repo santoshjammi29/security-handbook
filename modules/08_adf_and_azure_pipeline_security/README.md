@@ -6,11 +6,11 @@ Connecting Azure Data Factory (ADF) to storage accounts, databases, and compute 
 
 ```mermaid
 flowchart LR
-    ADF["Azure Data Factory<br>(Managed Identity: ADF-Prod-MI)"] --> Entra["Microsoft Entra ID (Token Service)"]
+    ADF["Azure Data Factory<br/>(Managed Identity: ADF-Prod-MI)"] --> Entra["Microsoft Entra ID (Token Service)"]
     Entra -->|Issue Ephemeral OAuth Token| ADF
-    ADF -->|Direct Token Authentication| ADLS["ADLS Gen2 Storage<br>(Role: Storage Blob Data Contributor)"]
-    ADF -->|Direct Token Authentication| KeyVault["Azure Key Vault<br>(Role: Key Vault Secrets User)"]
-    ADF -->|Direct Token Authentication| AzureSQL["Azure SQL Database<br>(Entra Admin / DB User)"]
+    ADF -->|Direct Token Authentication| ADLS["ADLS Gen2 Storage<br/>(Role: Storage Blob Data<br/>Contributor)"]
+    ADF -->|Direct Token Authentication| KeyVault["Azure Key Vault<br/>(Role: Key Vault Secrets User)"]
+    ADF -->|Direct Token Authentication| AzureSQL["Azure SQL Database<br/>(Entra Admin / DB User)"]
 ```
 
 ### System-Assigned vs. User-Assigned Managed Identity:
@@ -32,12 +32,12 @@ Enterprise architectures mandate **Managed VNet Integration Runtime**:
 flowchart TD
     subgraph ADFManagedVNet["ADF Managed Virtual Network"]
         Pipeline["Copy / Data Flow Activity"] --> ManagedIR["Managed VNet Integration Runtime"]
-        ManagedIR --> MPE["Managed Private Endpoint (Private IP)"]
+        ManagedIR --> MPE["Managed Private Endpoint (Private<br/>IP)"]
     end
 
     subgraph DataTier["Enterprise Data Tier"]
-        MPE -->|Private Link Tunnel| Storage["ADLS Gen2 (Public Access: Disabled)"]
-        MPE -->|Private Link Tunnel| SQL["Azure SQL DB (Public Access: Disabled)"]
+        MPE -->|Private Link Tunnel| Storage["ADLS Gen2 (Public Access:<br/>Disabled)"]
+        MPE -->|Private Link Tunnel| SQL["Azure SQL DB (Public Access:<br/>Disabled)"]
     end
 ```
 

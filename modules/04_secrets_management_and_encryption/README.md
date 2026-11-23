@@ -6,10 +6,10 @@ Hardcoded database connection strings, plain-text API tokens, and static passwor
 
 ```mermaid
 flowchart TD
-    Gen["1. Generation (High-Entropy, Cryptographically Secure)"] --> Store["2. Storage (HSM-Backed KMS: Azure Key Vault / AWS Secrets Manager)"]
-    Store --> Access["3. Access (RBAC, JIT Resolution, In-Memory Ephemeral Injection)"]
-    Access --> Rotate["4. Automated Rotation (Dual-Secret Protocol, Event-Driven)"]
-    Rotate --> Revoke["5. Revocation (Instant Invalidation, Zero-Downtime Rollover)"]
+    Gen["1. Generation (High-Entropy,<br/>Cryptographically Secure)"] --> Store["2. Storage (HSM-Backed KMS: Azure<br/>Key Vault / AWS Secrets Manager)"]
+    Store --> Access["3. Access (RBAC, JIT Resolution,<br/>In-Memory Ephemeral Injection)"]
+    Access --> Rotate["4. Automated Rotation (Dual-Secret<br/>Protocol, Event-Driven)"]
+    Rotate --> Revoke["5. Revocation (Instant<br/>Invalidation, Zero-Downtime<br/>Rollover)"]
 ```
 
 ---
@@ -21,19 +21,19 @@ Encrypting large multi-terabyte lakehouse files directly with asymmetric KMS key
 ```mermaid
 flowchart TD
     subgraph LocalCompute["Client / Lakehouse Compute Node"]
-        Plaintext["Plaintext Data (Delta Parquet / CSV)"]
+        Plaintext["Plaintext Data (Delta Parquet /<br/>CSV)"]
         GenDEK["1. Request DEK from KMS"]
-        AES["3. Fast Local AES-256-GCM Encryption"]
+        AES["3. Fast Local AES-256-GCM<br/>Encryption"]
         Ciphertext["Encrypted Ciphertext Data"]
-        EncDEK["Encrypted DEK (Stored alongside data)"]
+        EncDEK["Encrypted DEK (Stored alongside<br/>data)"]
     end
 
     subgraph CloudKMS["Cloud Hardware Security Module (HSM / KMS)"]
-        KEK["Key Encryption Key (KEK / Root Key)<br>Never leaves the HSM boundary"]
+        KEK["Key Encryption Key (KEK / Root<br/>Key)<br/>Never leaves the HSM boundary"]
     end
 
     GenDEK -->|GenerateDataKey Call| KEK
-    KEK -->|Return Plaintext DEK + Encrypted DEK| LocalCompute
+    KEK -->|"Return Plaintext DEK +<br/>Encrypted DEK"| LocalCompute
     Plaintext --> AES
     AES --> Ciphertext
     EncDEK -.->|Appended to Parquet Header| Ciphertext

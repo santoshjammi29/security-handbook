@@ -10,18 +10,18 @@
 
 ```mermaid
 flowchart TD
-    Alert["SEV-1 Alert: Storage Account Publicly Accessible or Anomalous Egress Spike"] --> Action1["Phase 1: Terminate Public Network Access Immediately"]
+    Alert["SEV-1 Alert: Storage Account<br/>Publicly Accessible or Anomalous<br/>Egress Spike"] --> Action1["Phase 1: Terminate Public Network<br/>Access Immediately"]
 
-    Action1 --> ApplyFirewall["Set PublicNetworkAccess = Disabled & Apply Storage Firewall"]
-    ApplyFirewall --> CheckActive["Phase 2: Check Active Connections & Terminate Rogue SAS / IAM Roles"]
+    Action1 --> ApplyFirewall["Set PublicNetworkAccess = Disabled<br/>& Apply Storage Firewall"]
+    ApplyFirewall --> CheckActive["Phase 2: Check Active Connections<br/>& Terminate Rogue SAS / IAM Roles"]
 
-    CheckActive --> AuditLogs["Phase 3: Forensic Log Ingestion (Storage Read Logs / VPC Flow Logs)"]
-    AuditLogs --> DataClass{"Did Downloaded Objects Contain PII / Financial Data?"}
+    CheckActive --> AuditLogs["Phase 3: Forensic Log Ingestion<br/>(Storage Read Logs / VPC Flow<br/>Logs)"]
+    AuditLogs --> DataClass{"Did Downloaded Objects Contain PII<br/>/ Financial Data?"}
 
-    DataClass -->|Yes: Confirmed Breach| BreachTeam["Activate Crisis Communications & Legal Notification (< 72h)"]
-    DataClass -->|No: Public Read Only| Remediation["Phase 4: Rotate Storage Keys & Migrate to Private Endpoints Only"]
+    DataClass -->|"Yes: Confirmed Breach"| BreachTeam["Activate Crisis Communications &<br/>Legal Notification (&lt; 72h)"]
+    DataClass -->|"No: Public Read Only"| Remediation["Phase 4: Rotate Storage Keys &<br/>Migrate to Private Endpoints Only"]
 
-    BreachTeam --> PostMortem["Phase 5: Automated Policy-as-Code Guardrail Enforcement"]
+    BreachTeam --> PostMortem["Phase 5: Automated Policy-as-Code<br/>Guardrail Enforcement"]
     Remediation --> PostMortem
 ```
 

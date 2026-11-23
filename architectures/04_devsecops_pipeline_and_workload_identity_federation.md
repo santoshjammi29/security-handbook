@@ -15,16 +15,16 @@ Continuous Integration and Continuous Deployment (CI/CD) pipelines represent the
 ```mermaid
 flowchart TD
     subgraph LegacyAttackVector["Legacy Threat Vector (Static Secrets)"]
-        Repo["Git Repository Secrets"] --> Leak["Leaked in Pull Request Logs / Rogue PR"]
-        Leak --> Attacker["Attacker Obtains Permanent Cloud Master Credential"]
-        Attacker --> Exfil["Exfiltrates Entire Lakehouse Dataset"]
+        Repo["Git Repository Secrets"] --> Leak["Leaked in Pull Request Logs /<br/>Rogue PR"]
+        Leak --> Attacker["Attacker Obtains Permanent Cloud<br/>Master Credential"]
+        Attacker --> Exfil["Exfiltrates Entire Lakehouse<br/>Dataset"]
     end
 
-    subgraph OIDCModernSecurity["Modern Zero-Static-Secret Pipeline (OIDC Federation)"]
+    subgraph OIDCModernSecurity["Modern Zero-Static-Secret Pipeline (OIDC<br/>Federation)"]
         Runner["Ephemeral GitHub Actions Runner"] --> OIDC["GitHub OIDC Token Service"]
-        OIDC --> STS["Cloud STS (Azure Entra ID / AWS STS)"]
-        STS --> Downscoped["15-Minute Ephemeral Token (Bound to repo, branch, & job)"]
-        Downscoped --> Deploy["Deploy Infrastructure & Exit (Zero Residual Secrets)"]
+        OIDC --> STS["Cloud STS (Azure Entra ID / AWS<br/>STS)"]
+        STS --> Downscoped["15-Minute Ephemeral Token (Bound<br/>to repo, branch, & job)"]
+        Downscoped --> Deploy["Deploy Infrastructure & Exit (Zero<br/>Residual Secrets)"]
     end
 ```
 
