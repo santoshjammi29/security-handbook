@@ -28,10 +28,10 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <details>
 <summary>&nbsp;&nbsp;<b>🔴 Tier 4: Production Hardening & Staff Architecture (Level 400) (4 Drills)</b></summary>
 
-- [ ] `security-handbook-doc-01_zero_trust_cloud_and_data_perimeter_architecture` — [Architecture: 01 Zero Trust Cloud And Data Perimeter Architecture](architectures/01_zero_trust_cloud_and_data_perimeter_architecture.md) `L400`
-- [ ] `security-handbook-doc-02_unity_catalog_and_lakehouse_governance_internals` — [Architecture: 02 Unity Catalog And Lakehouse Governance Internals](architectures/02_unity_catalog_and_lakehouse_governance_internals.md) `L400`
-- [ ] `security-handbook-doc-03_cryptography_envelope_encryption_and_key_management` — [Architecture: 03 Cryptography Envelope Encryption And Key Management](architectures/03_cryptography_envelope_encryption_and_key_management.md) `L400`
-- [ ] `security-handbook-doc-04_devsecops_pipeline_and_workload_identity_federation` — [Architecture: 04 Devsecops Pipeline And Workload Identity Federation](architectures/04_devsecops_pipeline_and_workload_identity_federation.md) `L400`
+- [ ] `security-handbook-doc-01_zero_trust_cloud_and_data_perimeter_architecture` — [Architecture: 01 Zero Trust Cloud And Data Perimeter Architecture](../architectures/01_zero_trust_cloud_and_data_perimeter_architecture.md) `L400`
+- [ ] `security-handbook-doc-02_unity_catalog_and_lakehouse_governance_internals` — [Architecture: 02 Unity Catalog And Lakehouse Governance Internals](../architectures/02_unity_catalog_and_lakehouse_governance_internals.md) `L400`
+- [ ] `security-handbook-doc-03_cryptography_envelope_encryption_and_key_management` — [Architecture: 03 Cryptography Envelope Encryption And Key Management](../architectures/03_cryptography_envelope_encryption_and_key_management.md) `L400`
+- [ ] `security-handbook-doc-04_devsecops_pipeline_and_workload_identity_federation` — [Architecture: 04 Devsecops Pipeline And Workload Identity Federation](../architectures/04_devsecops_pipeline_and_workload_identity_federation.md) `L400`
 
 </details>
 
@@ -64,12 +64,12 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <details>
 <summary>&nbsp;&nbsp;<b>🔴 Tier 4: Production Hardening & Staff Architecture (Level 400) (6 Drills)</b></summary>
 
-- [ ] `security-handbook-rb-01_compromised_credential_and_secret_revocation_triage` — [Incident Runbook: Compromised Credential And Secret Revocation Triage](runbooks/01_compromised_credential_and_secret_revocation_triage.md) `L400`
-- [ ] `security-handbook-rb-02_storage_account_data_exfiltration_and_public_exposure` — [Incident Runbook: Storage Account Data Exfiltration And Public Exposure](runbooks/02_storage_account_data_exfiltration_and_public_exposure.md) `L400`
-- [ ] `security-handbook-rb-03_databricks_unauthorized_data_access_and_pat_breach` — [Incident Runbook: Databricks Unauthorized Data Access And Pat Breach](runbooks/03_databricks_unauthorized_data_access_and_pat_breach.md) `L400`
-- [ ] `security-handbook-rb-04_data_pipeline_ssrf_and_sql_injection_remediation` — [Incident Runbook: Data Pipeline Ssrf And Sql Injection Remediation](runbooks/04_data_pipeline_ssrf_and_sql_injection_remediation.md) `L400`
-- [ ] `security-handbook-rb-05_ransomware_and_tampered_lakehouse_disaster_recovery` — [Incident Runbook: Ransomware And Tampered Lakehouse Disaster Recovery](runbooks/05_ransomware_and_tampered_lakehouse_disaster_recovery.md) `L400`
-- [ ] `security-handbook-rb-06_zero_downtime_certificate_and_secret_rotation` — [Incident Runbook: Zero Downtime Certificate And Secret Rotation](runbooks/06_zero_downtime_certificate_and_secret_rotation.md) `L400`
+- [ ] `security-handbook-rb-01_compromised_credential_and_secret_revocation_triage` — [Incident Runbook: Compromised Credential And Secret Revocation Triage](../runbooks/01_compromised_credential_and_secret_revocation_triage.md) `L400`
+- [ ] `security-handbook-rb-02_storage_account_data_exfiltration_and_public_exposure` — [Incident Runbook: Storage Account Data Exfiltration And Public Exposure](../runbooks/02_storage_account_data_exfiltration_and_public_exposure.md) `L400`
+- [ ] `security-handbook-rb-03_databricks_unauthorized_data_access_and_pat_breach` — [Incident Runbook: Databricks Unauthorized Data Access And Pat Breach](../runbooks/03_databricks_unauthorized_data_access_and_pat_breach.md) `L400`
+- [ ] `security-handbook-rb-04_data_pipeline_ssrf_and_sql_injection_remediation` — [Incident Runbook: Data Pipeline Ssrf And Sql Injection Remediation](../runbooks/04_data_pipeline_ssrf_and_sql_injection_remediation.md) `L400`
+- [ ] `security-handbook-rb-05_ransomware_and_tampered_lakehouse_disaster_recovery` — [Incident Runbook: Ransomware And Tampered Lakehouse Disaster Recovery](../runbooks/05_ransomware_and_tampered_lakehouse_disaster_recovery.md) `L400`
+- [ ] `security-handbook-rb-06_zero_downtime_certificate_and_secret_rotation` — [Incident Runbook: Zero Downtime Certificate And Secret Rotation](../runbooks/06_zero_downtime_certificate_and_secret_rotation.md) `L400`
 
 </details>
 
