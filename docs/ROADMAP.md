@@ -43,16 +43,16 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <details>
 <summary>&nbsp;&nbsp;<b>🟡 Tier 2: Core Mechanics & Implementation (Level 200) (10 Drills)</b></summary>
 
-- [ ] `security-handbook-01_authn_oidc_and_zero_trust` — [Authn Oidc And Zero Trust](modules/01_authn_oidc_and_zero_trust/README.md) `L200`
-- [ ] `security-handbook-02_authz_rbac_abac_and_governance` — [Authz Rbac Abac And Governance](modules/02_authz_rbac_abac_and_governance/README.md) `L200`
-- [ ] `security-handbook-03_cloud_networking_and_perimeter_defense` — [Cloud Networking And Perimeter Defense](modules/03_cloud_networking_and_perimeter_defense/README.md) `L200`
-- [ ] `security-handbook-04_secrets_management_and_encryption` — [Secrets Management And Encryption](modules/04_secrets_management_and_encryption/README.md) `L200`
-- [ ] `security-handbook-05_devsecops_cicd_and_supply_chain` — [Devsecops Cicd And Supply Chain](modules/05_devsecops_cicd_and_supply_chain/README.md) `L200`
-- [ ] `security-handbook-06_python_secure_coding_and_cryptography` — [Python Secure Coding And Cryptography](modules/06_python_secure_coding_and_cryptography/README.md) `L200`
-- [ ] `security-handbook-07_etl_elt_and_pipeline_security` — [Etl Elt And Pipeline Security](modules/07_etl_elt_and_pipeline_security/README.md) `L200`
-- [ ] `security-handbook-08_adf_and_azure_pipeline_security` — [Adf And Azure Pipeline Security](modules/08_adf_and_azure_pipeline_security/README.md) `L200`
-- [ ] `security-handbook-09_databricks_unity_catalog_security` — [Databricks Unity Catalog Security](modules/09_databricks_unity_catalog_security/README.md) `L200`
-- [ ] `security-handbook-10_incident_triage_auditing_and_compliance` — [Incident Triage Auditing And Compliance](modules/10_incident_triage_auditing_and_compliance/README.md) `L200`
+- [ ] `security-handbook-01_authn_oidc_and_zero_trust` — [Authn Oidc And Zero Trust](../modules/01_authn_oidc_and_zero_trust/README.md) `L200`
+- [ ] `security-handbook-02_authz_rbac_abac_and_governance` — [Authz Rbac Abac And Governance](../modules/02_authz_rbac_abac_and_governance/README.md) `L200`
+- [ ] `security-handbook-03_cloud_networking_and_perimeter_defense` — [Cloud Networking And Perimeter Defense](../modules/03_cloud_networking_and_perimeter_defense/README.md) `L200`
+- [ ] `security-handbook-04_secrets_management_and_encryption` — [Secrets Management And Encryption](../modules/04_secrets_management_and_encryption/README.md) `L200`
+- [ ] `security-handbook-05_devsecops_cicd_and_supply_chain` — [Devsecops Cicd And Supply Chain](../modules/05_devsecops_cicd_and_supply_chain/README.md) `L200`
+- [ ] `security-handbook-06_python_secure_coding_and_cryptography` — [Python Secure Coding And Cryptography](../modules/06_python_secure_coding_and_cryptography/README.md) `L200`
+- [ ] `security-handbook-07_etl_elt_and_pipeline_security` — [Etl Elt And Pipeline Security](../modules/07_etl_elt_and_pipeline_security/README.md) `L200`
+- [ ] `security-handbook-08_adf_and_azure_pipeline_security` — [Adf And Azure Pipeline Security](../modules/08_adf_and_azure_pipeline_security/README.md) `L200`
+- [ ] `security-handbook-09_databricks_unity_catalog_security` — [Databricks Unity Catalog Security](../modules/09_databricks_unity_catalog_security/README.md) `L200`
+- [ ] `security-handbook-10_incident_triage_auditing_and_compliance` — [Incident Triage Auditing And Compliance](../modules/10_incident_triage_auditing_and_compliance/README.md) `L200`
 
 </details>
 
@@ -81,7 +81,7 @@ Progress: [ ] 0 / 21 Completed (0.0%)
 <details>
 <summary>&nbsp;&nbsp;<b>🟡 Tier 2: Core Mechanics & Implementation (Level 200) (1 Drills)</b></summary>
 
-- [ ] `security-handbook-curriculum-topics` — [Topics Directory: Security Handbook](topics/README.md) `L200`
+- [ ] `security-handbook-curriculum-topics` — [Topics Directory: Security Handbook](../topics/README.md) `L200`
 
 </details>
 
